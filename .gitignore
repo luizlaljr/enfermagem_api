@@ -1,2 +1,18 @@
+# Dependency directories
 node_modules
 yarn.lock
+
+# Logs
+yarn-debug.log*
+yarn-error.log*
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# VSCode config files
+.vscode
+
+
