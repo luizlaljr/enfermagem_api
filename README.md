@@ -11,6 +11,7 @@ Yarn, Express, Postgress, Sequelize
 ## Meta
 
 Luiz Alberto – luiz_alberto@id.uff.br
+Gisely Barbosa - josefagisely@id.uff.br
 
 [https://github.com/luizlaljr/enfermagem_api](https://github.com/luizlaljr/)
 
