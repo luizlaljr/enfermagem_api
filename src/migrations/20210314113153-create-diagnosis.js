@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
       },
       definition:{
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       created_at: {
