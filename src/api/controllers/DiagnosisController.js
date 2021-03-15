@@ -34,13 +34,6 @@ module.exports = {
             name,
             definition,
           });
-        }{
-          attributes: {
-            exclude: [
-              'createdAt',
-              'updatedAt',
-            ]
-          }
         }
 
       return res.status(201).json({
