@@ -1,6 +1,6 @@
-require('dotenv').config({
+require('dotenv').config({ 
   path: '.env',
-});
+  silent: process.env.NODE_ENV === 'production' })
 
 module.exports = {
   dialect: 'postgres',
