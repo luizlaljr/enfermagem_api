@@ -15,5 +15,6 @@ Cause.init(connection);
 
 Diagnosis.associate(connection.models);
 Symptom.associate(connection.models);
+Cause.associate(connection.models)
 
 module.exports = connection;
