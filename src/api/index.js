@@ -13,5 +13,6 @@ Diagnosis_Symptom.init(connection);
 
 Diagnosis.associate(connection.models);
 Symptom.associate(connection.models);
+Diagnosis_Symptom.associate(connection.models);
 
 module.exports = connection;
