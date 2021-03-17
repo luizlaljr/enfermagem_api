@@ -1,6 +1,5 @@
-const Diagnosis = require('../models/Diagnosis');
 const Symptom = require('../models/Symptom');
-const Diagnosis_Symptom = require('../models/Diagnosis_Symptom');
+
 const { Op } = require('sequelize');
 
 module.exports = {
@@ -25,6 +24,13 @@ module.exports = {
           through: {
             attributes: [],                        
           },
+          include: {
+            association: 'symptoms',
+            attributes: ['name'],
+            through: {
+              attributes: [],                        
+            },
+          }
         },
         where: {
           name: {
