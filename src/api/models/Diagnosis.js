@@ -7,7 +7,8 @@ class Diagnosis extends Model{
     static init(sequelize){
         super.init({
             name: DataTypes.STRING,
-            definition: DataTypes.STRING,
+            definition: DataTypes.TEXT,
+            causes: DataTypes.TEXT,
         },{
             sequelize,
             tableName: 'diagnostics'
@@ -21,6 +22,7 @@ class Diagnosis extends Model{
             as: 'symptoms',
         });
         this.hasMany(models.Diagnosis_Symptom, {
+            foreignKey: 'diagnosis_id',
             as: 'diagnosis_symptom',
         })
     }

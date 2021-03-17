@@ -28,11 +28,12 @@ module.exports = {
         diagnostics
       } = req.body;
 
-      for (const {name, definition} of diagnostics) 
+      for (const {name, definition,causes} of diagnostics) 
         {
           await Diagnosis.create({
             name,
             definition,
+            causes,
           });
         }
 
@@ -74,6 +75,7 @@ module.exports = {
       const {
         name,
         definition,
+        causes
       } = req.body;
 
       const diagnosis = await Diagnosis.findByPk(diagnosis_id);
@@ -81,7 +83,8 @@ module.exports = {
       await Diagnosis.update(
         {
           name: name == null ? diagnosis.name : name,
-          definition: definition == null ? diagnosis.definition : definition
+          definition: definition == null ? diagnosis.definition : definition,
+          causes: causes == null ? diagnosis.causes : causes,
         },
         {
           where: diagnosis_id

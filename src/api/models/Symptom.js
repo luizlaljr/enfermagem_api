@@ -15,12 +15,13 @@ class Symptom extends Model{
 
   static associate(models) {
       this.belongsToMany(models.Diagnosis, {
-          foreignKey: 'symptom_id',
-          through: models.Diagnosis_Symptom,
-          as: 'diagnostics',
+            foreignKey: 'symptom_id',
+            through: models.Diagnosis_Symptom,
+            as: 'diagnostics',
       });
       this.hasMany(models.Diagnosis_Symptom, {
-          as: 'diagnosis_symptom',
+            foreignKey: 'symptom_id',
+            as: 'diagnosis_symptom',
       })
   }
 }

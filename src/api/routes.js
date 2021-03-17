@@ -4,7 +4,6 @@ const routes = express.Router();
 const DiagnosisController = require('./controllers/DiagnosisController')
 const SymptomController = require('./controllers/SymptomController')
 const Diagnosis_SymptomController = require('./controllers/Diagnosis_SymptomController');
-const CauseController = require('./controllers/CauseController')
 const Fech_DiagnosisController = require('./controllers/Fetch_DiagnosisController');
 
 routes.get('/diagnosis', DiagnosisController.index);
@@ -21,12 +20,6 @@ routes.delete('/symptom/:symptom_id', SymptomController.destroy);
 
 routes.get('/diagnosis_symptom', Diagnosis_SymptomController.index);
 routes.post('/diagnosis_symptom', Diagnosis_SymptomController.store);
-
-routes.get('/cause', CauseController.index);
-routes.post('/cause', CauseController.store);
-routes.get('/cause/:cause_id', CauseController.show);
-routes.put('/cause/:cause_id', CauseController.update);
-routes.delete('/cause/:cause_id', CauseController.destroy);
 
 routes.get('/:symptom', Fech_DiagnosisController.index);
 

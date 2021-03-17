@@ -4,17 +4,14 @@ const dbConfig = require('../config/database');
 const Diagnosis = require('./models/Diagnosis');
 const Symptom = require('./models/Symptom');
 const Diagnosis_Symptom = require('./models/Diagnosis_Symptom');
-const Cause = require('./models/Cause');
 
 const connection = new Sequelize(dbConfig);
 
 Diagnosis.init(connection);
 Symptom.init(connection);
 Diagnosis_Symptom.init(connection);
-Cause.init(connection);
 
 Diagnosis.associate(connection.models);
 Symptom.associate(connection.models);
-Cause.associate(connection.models)
 
 module.exports = connection;
