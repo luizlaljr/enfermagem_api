@@ -54,7 +54,23 @@ module.exports = {
       const {
         diagnosis_id,
       } = req.params;
-      const diagnosis = await Diagnosis.findByPk(diagnosis_id);
+      const diagnosis = await Diagnosis.findByPk(diagnosis_id,{
+        attributes: {
+          exclude: [
+            'createdAt',
+            'updatedAt',
+            'DiagnosisId',
+            'SymptomId'
+          ]
+        },
+        include: {
+          association: 'symptoms',
+          attributes: ['name'],
+          through: {
+            attributes: [],                        
+          }
+        }
+      });
 
       return res.status(200).json(diagnosis);
 
