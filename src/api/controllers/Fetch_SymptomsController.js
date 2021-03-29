@@ -34,7 +34,7 @@ module.exports = {
         },
         where: {
           name: {
-            [Op.like]: `${symptom}%`,
+            [Op.like]: `%${symptom}%`,
           }
         }
       })
