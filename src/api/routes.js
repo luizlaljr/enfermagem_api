@@ -1,8 +1,9 @@
 const express = require('express');
 const routes = express.Router();
 
-const DiagnosisController = require('./controllers/DiagnosisController')
-const SymptomController = require('./controllers/SymptomController')
+const DiagnosisController = require('./controllers/DiagnosisController');
+const DomainsController = require('./controllers/DomainsController');
+const SymptomController = require('./controllers/SymptomController');
 const Diagnosis_SymptomController = require('./controllers/Diagnosis_SymptomController');
 const Fetch_SymptomsController = require('./controllers/Fetch_SymptomsController');
 
@@ -11,6 +12,12 @@ routes.post('/diagnosis', DiagnosisController.store);
 routes.get('/diagnosis/:diagnosis_id', DiagnosisController.show);
 routes.put('/diagnosis/:diagnosis_id', DiagnosisController.update);
 routes.delete('/diagnosis/:diagnosis_id', DiagnosisController.destroy);
+
+routes.get('/domain', DomainsController.index);
+routes.post('/domain', DomainsController.store);
+routes.get('/domain/:domain_id', DomainsController.show);
+routes.put('/domain/:domain_id', DomainsController.update);
+routes.delete('/domain/:domain_id', DomainsController.destroy)
 
 routes.get('/symptom', SymptomController.index);
 routes.post('/symptom', SymptomController.store);
