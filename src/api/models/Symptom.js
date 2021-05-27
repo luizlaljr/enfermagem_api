@@ -14,15 +14,19 @@ class Symptom extends Model{
   };
 
   static associate(models) {
-      this.belongsToMany(models.Diagnosis, {
-            foreignKey: 'symptom_id',
-            through: models.Diagnosis_Symptom,
-            as: 'diagnostics',
-      });
-      this.hasMany(models.Diagnosis_Symptom, {
-            foreignKey: 'symptom_id',
-            as: 'diagnosis_symptom',
-      })
+    this.belongsToMany(models.Diagnosis, {
+      foreignKey: 'symptom_id',
+      through: models.Diagnosis_Symptom,
+      as: 'diagnostics',
+    })
+    this.hasMany(models.Diagnosis_Symptom, {
+      foreignKey: 'symptom_id',
+      as: 'diagnosis_symptom',
+    })
+    this.belongsTo(models.Domains, {
+      foreignKey: 'domain_id',
+      as: 'domain',
+    });
   }
 }
 

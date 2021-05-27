@@ -28,10 +28,11 @@ module.exports = {
         symptoms
       } = req.body;
 
-      for (const {name} of symptoms) 
+      for (const {name, domain_id} of symptoms) 
         {
           await Symptom.create({
             name,
+            domain_id
           });
         }
 
@@ -71,7 +72,8 @@ module.exports = {
       } = req.params;
 
       const {
-        name
+        name,
+        domain_id
       } = req.body;
 
       const symptom = await Symptom.findByPk(symptom_id);
@@ -79,6 +81,7 @@ module.exports = {
       await Symptom.update(
         {
           name: name == null ? symptom.name : name,
+          domain_id: domain_id == null ? symptom.domain_id : domain_id
         },
         {
           where: symptom_id
