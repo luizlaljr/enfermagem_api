@@ -16,7 +16,7 @@ class Domains extends Model{
 
   static associate(models) {
     this.hasMany(models.Symptom, {
-      as: 'domain',
+      as: 'symptoms',
     });
   }
 }
