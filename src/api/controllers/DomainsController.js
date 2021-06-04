@@ -4,12 +4,7 @@ module.exports = {
   async index(_,res) {
     try {
       const domain = await Domains.findAll({
-        attributes: {
-          exclude: [
-            'createdAt',
-            'updatedAt',
-          ]
-        }
+        attributes: ['id']
       });
 
       return res.status(200).json(domain);
@@ -60,7 +55,7 @@ module.exports = {
             'updatedAt',
           ]
         },include: {
-          association:'domain',
+          association:'symptoms',
           attributes: ['id','name']
         }
       });
