@@ -28,11 +28,10 @@ module.exports = {
         symptoms
       } = req.body;
 
-      for (const {name, domain_id} of symptoms) 
+      for (const {name} of symptoms) 
         {
           await Symptom.create({
-            name,
-            domain_id
+            name
           });
         }
 
@@ -72,16 +71,14 @@ module.exports = {
       } = req.params;
 
       const {
-        name,
-        domain_id
+        name
       } = req.body;
 
       const symptom = await Symptom.findByPk(symptom_id);
 
       await Symptom.update(
         {
-          name: name == null ? symptom.name : name,
-          domain_id: domain_id == null ? symptom.domain_id : domain_id
+          name: name == null ? symptom.name : name
         },
         {
           where: symptom_id
@@ -118,7 +115,6 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         "message-error": "Houve algum problema para deletar este sintoma.",
         "info-error": error.message,

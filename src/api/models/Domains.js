@@ -15,9 +15,15 @@ class Domains extends Model{
   };
 
   static associate(models) {
-    this.hasMany(models.Symptom, {
+    this.belongsToMany(models.Symptom, {
+      foreignKey: 'domain_id',
+      through: models.Domain_Symptom,
       as: 'symptoms',
     });
+    this.hasMany(models.Domain_Symptom, {
+        foreignKey: 'domain_id',
+        as: 'domain_symptom',
+    })
   }
 }
 

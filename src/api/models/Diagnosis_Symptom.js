@@ -17,7 +17,7 @@ class Diagnosis_Symptom extends Model{
       });
       this.belongsTo(models.Symptom, {
           foreignKey: 'symptom_id',
-          as: 'symptoms',
+          as: 'symptomsOnDiagnostics',
       });
   }
 }

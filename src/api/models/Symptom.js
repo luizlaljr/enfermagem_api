@@ -23,10 +23,15 @@ class Symptom extends Model{
       foreignKey: 'symptom_id',
       as: 'diagnosis_symptom',
     })
-    this.belongsTo(models.Domains, {
-      foreignKey: 'domain_id',
-      as: 'domain',
-    });
+    this.belongsToMany(models.Domains, {
+      foreignKey: 'symptom_id',
+      through: models.Domain_Symptom,
+      as: 'domains',
+    })
+    this.hasMany(models.Domain_Symptom, {
+      foreignKey: 'symptom_id',
+      as: 'domain_symptom',
+    })
   }
 }
 

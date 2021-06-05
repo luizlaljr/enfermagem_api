@@ -5,6 +5,7 @@ const DiagnosisController = require('./controllers/DiagnosisController');
 const DomainsController = require('./controllers/DomainsController');
 const SymptomController = require('./controllers/SymptomController');
 const Diagnosis_SymptomController = require('./controllers/Diagnosis_SymptomController');
+const Domain_SymptomController = require('./controllers/Domain_SymptomController')
 const Fetch_SymptomsController = require('./controllers/Fetch_SymptomsController');
 
 routes.get('/diagnosis', DiagnosisController.index);
@@ -27,6 +28,9 @@ routes.delete('/symptom/:symptom_id', SymptomController.destroy);
 
 routes.get('/diagnosis_symptom', Diagnosis_SymptomController.index);
 routes.post('/diagnosis_symptom', Diagnosis_SymptomController.store);
+
+routes.get('/domain_symptom', Domain_SymptomController.index);
+routes.post('/domain_symptom', Domain_SymptomController.store);
 
 routes.get('/:symptom', Fetch_SymptomsController.index);
 
