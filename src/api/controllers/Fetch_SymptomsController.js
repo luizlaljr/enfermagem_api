@@ -7,7 +7,7 @@ module.exports = {
         id
       } = req.query;
 
-      const symptoms = await Symptom.sequelize.query(`select diagnostics.name, count(diagnostics.name) as amount from symptoms inner join diagnosis_symptom on symptoms.id = diagnosis_symptom.symptom_id inner join diagnostics on diagnostics.id = diagnosis_symptom.diagnosis_id where symptoms.id IN ( ${id} ) group by diagnostics.name order by amount DESC`, {
+      const symptoms = await Symptom.sequelize.query(`select diagnostics.id, diagnostics.name, count(diagnostics.name) as amount from symptoms inner join diagnosis_symptom on symptoms.id = diagnosis_symptom.symptom_id inner join diagnostics on diagnostics.id = diagnosis_symptom.diagnosis_id where symptoms.id IN ( ${id} ) group by diagnostics.id, diagnostics.name order by amount DESC`, {
         model: Symptom,
         mapToModel: true,
         nest: true,
