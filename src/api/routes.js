@@ -32,6 +32,6 @@ routes.post('/diagnosis_symptom', Diagnosis_SymptomController.store);
 routes.get('/domain_symptom', Domain_SymptomController.index);
 routes.post('/domain_symptom', Domain_SymptomController.store);
 
-routes.get('/:symptom', Fetch_SymptomsController.index);
+routes.get('/fetch', Fetch_SymptomsController.index);
 
 module.exports = routes;
