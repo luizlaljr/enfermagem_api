@@ -40,7 +40,7 @@ module.exports = {
 
           const symptom = await Symptom.findByPk(symptom_id);
                 
-          const domain_symptom = await domain.addSymptom(symptom);
+          await domain.addSymptom(symptom);
         }
             
       return res.status(201).json({
