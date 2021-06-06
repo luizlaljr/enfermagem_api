@@ -81,15 +81,16 @@ module.exports = {
           name: name == null ? symptom.name : name
         },
         {
-          where: symptom_id
+          where: {id: symptom_id}
         }
       )
       
       return res.status(200).json({
         "message": "Sintoma atualizado com sucesso.",
-    });
+      });
 
     } catch (error) {
+      console.log(error)
       return res.status(500).json({
         "message-error": "Houve algum problema para atualizar este sintoma.",
         "info-error": error.message,

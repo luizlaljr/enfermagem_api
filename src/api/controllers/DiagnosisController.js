@@ -103,7 +103,7 @@ module.exports = {
           causes: causes == null ? diagnosis.causes : causes,
         },
         {
-          where: diagnosis_id
+          where: {id: diagnosis_id}
         }
       )
       

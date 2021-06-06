@@ -89,7 +89,7 @@ module.exports = {
           definition: definition == null ? domain.definition : definition,
         },
         {
-          where: domain_id
+          where: {id: domain_id}
         }
       )
       
