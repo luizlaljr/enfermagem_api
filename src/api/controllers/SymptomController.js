@@ -90,7 +90,6 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error)
       return res.status(500).json({
         "message-error": "Houve algum problema para atualizar este sintoma.",
         "info-error": error.message,
