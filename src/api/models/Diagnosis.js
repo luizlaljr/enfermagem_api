@@ -7,6 +7,7 @@ class Diagnosis extends Model{
     static init(sequelize){
         super.init({
             name: DataTypes.STRING,
+            code: DataTypes.STRING,
             definition: DataTypes.TEXT,
             causes: DataTypes.TEXT,
         },{

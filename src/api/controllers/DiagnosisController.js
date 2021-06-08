@@ -28,10 +28,11 @@ module.exports = {
         diagnostics
       } = req.body;
 
-      for (const {name, definition,causes} of diagnostics) 
+      for (const {name, code, definition, causes} of diagnostics) 
         {
           await Diagnosis.create({
             name,
+            code,
             definition,
             causes,
           });
@@ -90,6 +91,7 @@ module.exports = {
 
       const {
         name,
+        code,
         definition,
         causes
       } = req.body;
@@ -99,6 +101,7 @@ module.exports = {
       await Diagnosis.update(
         {
           name: name == null ? diagnosis.name : name,
+          code: code == null ? diagnosis.code : code,
           definition: definition == null ? diagnosis.definition : definition,
           causes: causes == null ? diagnosis.causes : causes,
         },
@@ -137,7 +140,6 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         "message-error": "Houve algum problema para deletar este diagnóstico.",
         "info-error": error.message,
