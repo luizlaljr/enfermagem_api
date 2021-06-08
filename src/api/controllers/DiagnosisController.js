@@ -66,7 +66,7 @@ module.exports = {
         },
         include: {
           association: 'symptoms',
-          attributes: ['name'],
+          attributes: ['id', 'name'],
           through: {
             attributes: [],                        
           }
