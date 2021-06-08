@@ -4,7 +4,12 @@ module.exports = {
   async index(_,res) {
     try {
       const domain = await Domains.findAll({
-        attributes: ['id']
+        attributes: {
+          exclude: [
+            'createdAt',
+            'updatedAt',
+          ]
+        }
       });
 
       return res.status(200).json(domain);
@@ -23,11 +28,12 @@ module.exports = {
         domains
       } = req.body;
 
-      for (const {name, definition} of domains) 
+      for (const {name, definition, abstract} of domains) 
         {
           await Domains.create({
             name,
             definition,
+            abstract,
           });
         }
 
@@ -78,7 +84,8 @@ module.exports = {
 
       const {
         name,
-        definition
+        definition,
+        abstract,
       } = req.body;
 
       const domain = await Domains.findByPk(domain_id);
@@ -87,6 +94,7 @@ module.exports = {
         {
           name: name == null ? domain.name : name,
           definition: definition == null ? domain.definition : definition,
+          abstract: abstract == null ? domain.abstract : abstract,
         },
         {
           where: {id: domain_id}
@@ -123,7 +131,6 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         "message-error": "Houve algum problema para deletar este domínio.",
         "info-error": error.message,

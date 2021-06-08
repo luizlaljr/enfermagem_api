@@ -8,6 +8,7 @@ class Domains extends Model{
       super.init({
           name: DataTypes.STRING,
           definition: DataTypes.STRING,
+          abstract: DataTypes.TEXT,
       },{
           sequelize,
           tableName: 'domains'
