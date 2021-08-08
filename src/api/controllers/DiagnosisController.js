@@ -28,13 +28,15 @@ module.exports = {
         diagnostics
       } = req.body;
 
-      for (const {name, code, definition, causes} of diagnostics) 
+      for (const {name, code, definition, causes, conditions, populations} of diagnostics) 
         {
           await Diagnosis.create({
             name,
             code,
             definition,
             causes,
+            conditions,
+            populations,
           });
         }
 
@@ -93,7 +95,9 @@ module.exports = {
         name,
         code,
         definition,
-        causes
+        causes,
+        conditions,
+        populations,
       } = req.body;
 
       const diagnosis = await Diagnosis.findByPk(diagnosis_id);
@@ -104,6 +108,8 @@ module.exports = {
           code: code == null ? diagnosis.code : code,
           definition: definition == null ? diagnosis.definition : definition,
           causes: causes == null ? diagnosis.causes : causes,
+          conditions: conditions == null ? diagnosis.conditions : conditions,
+          populations: populations == null ? diagnosis.populations : populations,
         },
         {
           where: {id: diagnosis_id}
@@ -111,7 +117,7 @@ module.exports = {
       )
       
       return res.status(200).json({
-        "message": "Mission updated with sucess.",
+        "message": "Diagnóstico atualizado com sucesso.",
     });
 
     } catch (error) {

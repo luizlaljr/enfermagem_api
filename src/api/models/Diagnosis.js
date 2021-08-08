@@ -10,6 +10,8 @@ class Diagnosis extends Model{
             code: DataTypes.STRING,
             definition: DataTypes.TEXT,
             causes: DataTypes.TEXT,
+            conditions: DataTypes.TEXT,
+            populations: DataTypes.TEXT,
         },{
             sequelize,
             tableName: 'diagnostics'
