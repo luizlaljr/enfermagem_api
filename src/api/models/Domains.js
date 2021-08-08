@@ -9,6 +9,7 @@ class Domains extends Model{
           name: DataTypes.STRING,
           definition: DataTypes.STRING,
           abstract: DataTypes.TEXT,
+          order: DataTypes.INTEGER,
       },{
           sequelize,
           tableName: 'domains'

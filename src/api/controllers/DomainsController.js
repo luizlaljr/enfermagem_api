@@ -9,7 +9,7 @@ module.exports = {
             'createdAt',
             'updatedAt',
           ]
-        }
+        },order:['order']
       });
 
       return res.status(200).json(domain);
@@ -28,12 +28,13 @@ module.exports = {
         domains
       } = req.body;
 
-      for (const {name, definition, abstract} of domains) 
+      for (const {name, definition, abstract, order} of domains) 
         {
           await Domains.create({
             name,
             definition,
             abstract,
+            order,
           });
         }
 
@@ -54,7 +55,7 @@ module.exports = {
       const {
         domain_id,
       } = req.params;
-      const domain = await Domains.findByPk(domain_id,{
+      const domain = await Domains.findOne({ where: { order: domain_id } },{
         attributes: {
           exclude: [
             'createdAt',
@@ -86,6 +87,7 @@ module.exports = {
         name,
         definition,
         abstract,
+        order,
       } = req.body;
 
       const domain = await Domains.findByPk(domain_id);
@@ -95,6 +97,7 @@ module.exports = {
           name: name == null ? domain.name : name,
           definition: definition == null ? domain.definition : definition,
           abstract: abstract == null ? domain.abstract : abstract,
+          order: order == null ? domain.order : order,
         },
         {
           where: {id: domain_id}
