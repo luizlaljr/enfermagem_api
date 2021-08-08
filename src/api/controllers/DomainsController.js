@@ -55,7 +55,8 @@ module.exports = {
       const {
         domain_id,
       } = req.params;
-      const domain = await Domains.findOne({ where: { order: domain_id } },{
+      const domain = await Domains.findOne({
+        where: { order: domain_id },
         attributes: {
           exclude: [
             'createdAt',
